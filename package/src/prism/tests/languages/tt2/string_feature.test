@@ -1,0 +1,33 @@
+[%
+"https://example.com/"
+" # not a comment"
+"multi-line
+string"
+"escaped \"quotes\"\nwork\twell"
+'https://example.com/'
+' # not a comment'
+'multi-line
+string'
+'escaped \'quotes\' work'
+%]
+
+----------------------------------------------------
+
+[
+	["tt2", [
+		["delimiter", "[%"],
+		["string", ["\"https://example.com/\""]],
+		["string", ["\" # not a comment\""]],
+		["string", ["\"multi-line\nstring\""]],
+		["string", ["\"escaped \\\"quotes\\\"\\nwork\\twell\""]],
+		["string", "'https://example.com/'"],
+		["string", "' # not a comment'"],
+		["string", "'multi-line\nstring'"],
+		["string", "'escaped \\'quotes\\' work'"],
+		["delimiter", "%]"]
+	]]
+]
+
+----------------------------------------------------
+
+Checks for strings.

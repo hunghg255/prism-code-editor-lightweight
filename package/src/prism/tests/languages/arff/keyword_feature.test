@@ -1,0 +1,28 @@
+@attribute class {Iris-setosa,Iris-versicolor,Iris-virginica}
+@data
+@end
+@relation
+
+----------------------------------------------------
+
+[
+	["keyword", "@attribute"],
+	" class ",
+	["punctuation", "{"],
+	"Iris-setosa",
+	["punctuation", ","],
+	"Iris-versicolor",
+	["punctuation", ","],
+	"Iris-virginica",
+	["punctuation", "}"],
+
+	["keyword", "@data"],
+
+	["keyword", "@end"],
+
+	["keyword", "@relation"]
+]
+
+----------------------------------------------------
+
+Checks for all keywords.

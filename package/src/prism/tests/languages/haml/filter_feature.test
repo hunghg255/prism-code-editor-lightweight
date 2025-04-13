@@ -1,0 +1,21 @@
+:some-language
+	some code
+
+~
+	:some-language
+		some code
+
+----------------------------------------------------
+
+[
+	["filter", [
+		["filter-name", ":some-language"],
+		"\n\tsome code"
+	]],
+
+	["punctuation", "~"],
+	["filter", [
+		["filter-name", ":some-language"],
+		"\n\t\tsome code"
+	]]
+]
