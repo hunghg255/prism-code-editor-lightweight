@@ -10,14 +10,17 @@ import { matchTags } from "../extensions/matchTags.js"
 import { highlightSelectionMatches } from "../extensions/search/selection.js"
 import { searchWidget } from "../extensions/search/widget.js"
 import { loadTheme } from "../themes/index.js"
+import { isClient } from "../utils/isClient.js"
 
 export type SetupOptions = Partial<EditorOptions> & { theme: string }
 
 const addStyles = (shadow: ShadowRoot, styles: string, id?: string) => {
-	const style = document.createElement("style")
-	style.textContent = styles
-	if (id) style.id = id
-	shadow.append(style)
+	if (isClient()) {
+		const style = document.createElement("style")
+		style.textContent = styles
+		if (id) style.id = id
+		shadow.append(style)
+	}
 }
 
 /**
@@ -70,7 +73,7 @@ const minimalEditor = (
  * Same as {@link minimalEditor}, but also adds {@link indentGuides}, {@link highlightSelectionMatches},
  * {@link matchBrackets}, {@link highlightBracketPairs}, {@link defaultCommands} and {@link editHistory}
  * extensions and language specific behavior.
- * 
+ *
  * There's also an extension added that clears the history stack every time the value is
  * changed programmatically.
  */

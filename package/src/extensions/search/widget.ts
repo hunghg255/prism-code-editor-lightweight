@@ -10,6 +10,7 @@ import {
 import { regexEscape, getModifierCode } from "../../utils/index.js"
 import { createReplaceAPI } from "./replace.js"
 import { addListener, getLineEnd, getLineStart, getStyleValue } from "../../utils/local.js"
+import { isClient } from "../../utils/isClient.js"
 
 const shortcut = ` (Alt+${isMac ? "Cmd+" : ""}`
 
@@ -80,21 +81,23 @@ export const searchWidget = (): SearchWidget => {
 		}
 
 		const keydown = (e: KeyboardEvent) => {
-			// F or G + Ctrl/Cmd
-			if (e.keyCode >> 1 == 35 && getModifierCode(e) == (isMac ? 0b0100 : 0b0010)) {
-				preventDefault(e)
-				open()
-				let [start, end] = getSelection(),
-					value = editor.value,
-					word =
-						value.slice(start, end) ||
-						value.slice(0, start).match(/[_\p{N}\p{L}]*$/u)![0] +
-							value.slice(start).match(/^[_\p{N}\p{L}]*/u)![0]
-				if (/^$|\n/.test(word)) startSearch()
-				else {
-					if (useRegExp) word = regexEscape(word)
-					document.execCommand("insertText", false, word)
-					findInput.select()
+			if (isClient()) {
+				// F or G + Ctrl/Cmd
+				if (e.keyCode >> 1 == 35 && getModifierCode(e) == (isMac ? 0b0100 : 0b0010)) {
+					preventDefault(e)
+					open()
+					let [start, end] = getSelection(),
+						value = editor.value,
+						word =
+							value.slice(start, end) ||
+							value.slice(0, start).match(/[_\p{N}\p{L}]*$/u)![0] +
+								value.slice(start).match(/^[_\p{N}\p{L}]*/u)![0]
+					if (/^$|\n/.test(word)) startSearch()
+					else {
+						if (useRegExp) word = regexEscape(word)
+						document.execCommand("insertText", false, word)
+						findInput.select()
+					}
 				}
 			}
 		}

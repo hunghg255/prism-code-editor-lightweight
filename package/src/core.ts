@@ -293,11 +293,15 @@ const editorFromPlaceholder = (
 
 
 const createTemplate = <T extends Element = HTMLDivElement>(html: string) => {
-	const templateEl = document.createElement("div")
+	if (isClient()) {
+		const templateEl = document.createElement("div")
 
-	templateEl.innerHTML = html
-	const node = templateEl.firstChild!
-	return () => <T>node.cloneNode(true)
+		templateEl.innerHTML = html
+		const node = templateEl.firstChild!
+		return () => <T>node.cloneNode(true)
+	}
+
+	return () => <T>(<unknown>null)
 }
 
 const addTextareaListener = <T extends keyof HTMLElementEventMap>(
@@ -307,8 +311,12 @@ const addTextareaListener = <T extends keyof HTMLElementEventMap>(
 	options?: boolean | AddEventListenerOptions,
 ) => editor.textarea.addEventListener(type, listener, options)
 
-const getElement = <T extends Node>(el?: T | string | null) =>
-	typeof el == "string" ? document.querySelector<HTMLElement>(el) : el
+const getElement = <T extends Node>(el?: T | string | null) => {
+	if (isClient()) {
+		return typeof el == "string" ? document.querySelector<HTMLElement>(el) : el;
+	}
+}
+
 
 const userAgent = navigator.userAgent
 const isMac = /Mac|iPhone|iPod|iPad/i.test(navigator.platform)
@@ -339,7 +347,7 @@ const preventDefault = (e: Event) => {
 
 let selectionChange: null | (() => void)
 
-if (isClient) {
+if (isClient()) {
 	document.addEventListener("selectionchange", () => selectionChange?.())
 }
 

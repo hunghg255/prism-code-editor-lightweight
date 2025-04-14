@@ -1,6 +1,7 @@
 import { InputSelection, PrismEditor } from "../index.js"
 import { numLines, isChrome, isWebKit } from "../core.js"
 import { addListener, getLineEnd, getLineStart } from "./local.js"
+import { isClient } from "./isClient.js"
 
 let prevSelection: InputSelection | 0
 
@@ -50,21 +51,23 @@ const getClosestToken = (
 	marginRight = marginLeft,
 	position = editor.getSelection()[0],
 ) => {
-	const value = editor.value
-	const line = editor.wrapper.children[numLines(value, 0, position)]
-	// We unfortunitely have to include elements, else we can't get empty tokens
-	const walker = document.createTreeWalker(line, 5)
+	if (isClient()) {
+		const value = editor.value
+		const line = editor.wrapper.children[numLines(value, 0, position)]
+		// We unfortunitely have to include elements, else we can't get empty tokens
+		const walker = document.createTreeWalker(line, 5)
 
-	let node = walker.lastChild()
-	let offset = getLineEnd(value, position) + 1 - position - (<Text>node).length
+		let node = walker.lastChild()
+		let offset = getLineEnd(value, position) + 1 - position - (<Text>node).length
 
-	while (-offset <= marginRight && (node = walker.previousNode())) {
-		if (node.lastChild) continue
-		offset -= (<Text>node).length || 0
+		while (-offset <= marginRight && (node = walker.previousNode())) {
+			if (node.lastChild) continue
+			offset -= (<Text>node).length || 0
 
-		if (offset <= marginLeft) {
-			for (; node != line; node = node.parentNode!) {
-				if ((<Element>node).matches?.(selector)) return <HTMLSpanElement>node
+			if (offset <= marginLeft) {
+				for (; node != line; node = node.parentNode!) {
+					if ((<Element>node).matches?.(selector)) return <HTMLSpanElement>node
+				}
 			}
 		}
 	}
@@ -127,23 +130,25 @@ const insertText = (
 	// Only Safari dispatches a beforeinput event
 	isWebKit || textarea.dispatchEvent(new InputEvent("beforeinput", { data: text }))
 
-	// Inserting escaped HTML in Chrome and Safari instead for much better performance
-	if (isChrome || isWebKit) {
-		if (avoidBug) {
-			// This means the last new line won't be inserted if there's
-			// no selection, but that's less annoying than the bug.
-			textarea.selectionEnd--
-			text = text.slice(0, -1)
-		}
-		// New line at the end is always ignored in Safari
-		if (isWebKit) text += "\n"
-		document.execCommand(
-			text ? "insertHTML" : "delete",
-			false,
-			text.replace(/&/g, "&amp;").replace(/</g, "&lt;"),
-		)
-		if (avoidBug) textarea.selectionStart++
-	} else document.execCommand(text ? "insertText" : "delete", false, text)
+	if (isClient()) {
+		// Inserting escaped HTML in Chrome and Safari instead for much better performance
+		if (isChrome || isWebKit) {
+			if (avoidBug) {
+				// This means the last new line won't be inserted if there's
+				// no selection, but that's less annoying than the bug.
+				textarea.selectionEnd--
+				text = text.slice(0, -1)
+			}
+			// New line at the end is always ignored in Safari
+			if (isWebKit) text += "\n"
+			document.execCommand(
+				text ? "insertHTML" : "delete",
+				false,
+				text.replace(/&/g, "&amp;").replace(/</g, "&lt;"),
+			)
+			if (avoidBug) textarea.selectionStart++
+		} else document.execCommand(text ? "insertText" : "delete", false, text)
+	}
 
 	prevSelection = 0
 }

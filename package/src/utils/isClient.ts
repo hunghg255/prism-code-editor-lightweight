@@ -1,1 +1,7 @@
-export const isClient = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+export const isClient = () => {
+  try {
+    return typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  } catch (error) {
+    return false;
+  }
+}

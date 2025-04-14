@@ -2,6 +2,7 @@
 
 import { PrismEditor } from "../../../index.js"
 import { getClosestToken } from "../../../utils/index.js"
+import { isClient } from "../../../utils/isClient.js"
 import { getLineStart } from "../../../utils/local.js"
 import { Bracket } from "../../matchBrackets/index.js"
 import { htmlTags } from "../markup/index.js"
@@ -16,7 +17,7 @@ const atRule = /@([\w-]*)(?!\w|-)(?:[^;{"']|"(?:\\[\s\S]|[^\\\n"])*"|'(?:\\[\s\S
 const tagNames: Completion[] = Object.keys(htmlTags).map(tag => ({ label: tag, icon: "keyword" }))
 
 const getCSSProperties = () => {
-	if (!properties) {
+	if (!properties && isClient()) {
 		properties = []
 		const style = document.body.style
 		const seen = new Set<string>()
