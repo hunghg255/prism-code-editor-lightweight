@@ -1,3 +1,5 @@
+# FORK from https://github.com/FIameCaster/prism-code-editor
+
 <h1 align="center">Prism code editor</h1>
 <p align="center">
   <a href="https://prism-code-editor.netlify.app">Demos</a> | <a href="https://prism-code-editor.netlify.app/api">API Docs</a>
@@ -5,14 +7,16 @@
 <p align="center">
   <a href="https://bundlephobia.com/package/prism-code-editor"><img src="https://img.shields.io/bundlephobia/minzip/prism-code-editor?label=size" alt="Bundle size"></a>
   <a href="https://npmjs.com/prism-code-editor"><img src="https://img.shields.io/npm/v/prism-code-editor" alt="NPM package"></a>
-  <a href="https://github.com/FIameCaster/prism-code-editor/releases"><img src="https://img.shields.io/github/v/release/FIameCaster/prism-code-editor" alt="GitHub release"></a>
+  <a href="https://github.com/hunghg255/prism-code-editor-lightweight/-lightweight/releases"><img src="https://img.shields.io/github/v/release/hunghg255/prism-code-editor-lightweight/" alt="GitHub release"></a>
 </p>
 <p align="center">
   <strong>Lightweight, extensible code editor component for the web using <a href="https://github.com/PrismJS/prism">Prism</a>.</strong>
 </p>
 <p align="center">
-  <a href="https://prism-code-editor.netlify.app"><img src="https://github.com/FIameCaster/prism-code-editor/blob/3.1.0/assets/demo.png?raw=true" width="640" alt="Editor example"></a>
+  <a href="https://prism-code-editor.netlify.app"><img src="https://github.com/hunghg255/prism-code-editor-lightweight/-lightweight/blob/3.1.0/assets/demo.png?raw=true" width="640" alt="Editor example"></a>
 </p>
+
+
 
 ## Why?
 
@@ -74,9 +78,9 @@ The library includes 4 different setups you can import. These will automatically
 These setups are very cumbersome to customize and are therefore only recommended while getting started.
 
 ```javascript
-import { minimalEditor, basicEditor, fullEditor, readonlyEditor } from "prism-code-editor/setups"
+import { minimalEditor, basicEditor, fullEditor, readonlyEditor } from "prism-code-editor-lightweight/setups"
 // Importing Prism grammars
-import "prism-code-editor/prism/languages/markup"
+import "prism-code-editor-lightweight/prism/languages/markup"
 
 const editor = basicEditor(
   "#editor",
@@ -96,18 +100,18 @@ With little effort, you can fully customize which extensions are added and how t
 
 ```javascript
 // index.ts
-import "prism-code-editor/prism/languages/markup"
-import "prism-code-editor/prism/languages/css-extras"
-import "prism-code-editor/prism/languages/javascript"
+import "prism-code-editor-lightweight/prism/languages/markup"
+import "prism-code-editor-lightweight/prism/languages/css-extras"
+import "prism-code-editor-lightweight/prism/languages/javascript"
 
-import { createEditor } from "prism-code-editor"
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { indentGuides } from "prism-code-editor/guides"
+import { createEditor } from "prism-code-editor-lightweight"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { indentGuides } from "prism-code-editor-lightweight/guides"
 
 // Importing styles
-import "prism-code-editor/layout.css"
-import "prism-code-editor/scrollbar.css"
-import "prism-code-editor/themes/github-dark.css"
+import "prism-code-editor-lightweight/layout.css"
+import "prism-code-editor-lightweight/scrollbar.css"
+import "prism-code-editor-lightweight/themes/github-dark.css"
 
 export const editor = createEditor(
   "#editor",
@@ -115,7 +119,7 @@ export const editor = createEditor(
   indentGuides(),
   matchBrackets(),
 )
-  
+
 import("./extensions")
 ```
 
@@ -123,18 +127,18 @@ To minimize your main JavaScript bundle, you can dynamically import all extensio
 
 ```typescript
 // extensions.ts
-import "prism-code-editor/search.css"
-import "prism-code-editor/copy-button.css"
-import "prism-code-editor/languages/html"
-import "prism-code-editor/languages/clike"
-import "prism-code-editor/languages/css"
+import "prism-code-editor-lightweight/search.css"
+import "prism-code-editor-lightweight/copy-button.css"
+import "prism-code-editor-lightweight/languages/html"
+import "prism-code-editor-lightweight/languages/clike"
+import "prism-code-editor-lightweight/languages/css"
 
-import { searchWidget, highlightSelectionMatches } from "prism-code-editor/search"
-import { defaultCommands, editHistory } from "prism-code-editor/commands"
-import { cursorPosition } from "prism-code-editor/cursor"
-import { copyButton } from "prism-code-editor/copy-button"
-import { matchTags } from "prism-code-editor/match-tags"
-import { highlightBracketPairs } from "prism-code-editor/highlight-brackets"
+import { searchWidget, highlightSelectionMatches } from "prism-code-editor-lightweight/search"
+import { defaultCommands, editHistory } from "prism-code-editor-lightweight/commands"
+import { cursorPosition } from "prism-code-editor-lightweight/cursor"
+import { copyButton } from "prism-code-editor-lightweight/copy-button"
+import { matchTags } from "prism-code-editor-lightweight/match-tags"
+import { highlightBracketPairs } from "prism-code-editor-lightweight/highlight-brackets"
 import { editor } from "./index"
 
 editor.addExtensions(
@@ -167,7 +171,7 @@ This library has been rewritten for React and SolidJS. These rewrites better int
 | `readOnly` | `boolean` | Whether the editor should be read only. Defaults to `false`. |
 | `wordWrap` | `boolean` | Whether the editor should have word wrap. Defaults to `false`. |
 | `value` | `string` | Initial value to display in the editor. |
-| `rtl` | `boolean` | Whether the editor uses right to left directionality. Defaults to `false`. Requires extra CSS from `prism-code-editor/rtl-layout.css` to work. |
+| `rtl` | `boolean` | Whether the editor uses right to left directionality. Defaults to `false`. Requires extra CSS from `prism-code-editor-lightweight/rtl-layout.css` to work. |
 | `onUpdate` | `(value: string => void` | Function called after the editor updates. |
 | `onSelectionChange` | `(selection: InputSelection, value: string) => void` | Function called when the editor's selection changes. |
 | `onTokenize` | `(tokens: TokenStream, language: string, value: string) => void` | Function called before the tokens are stringified to HTML. |
@@ -200,12 +204,12 @@ import {
   rest,
   // Token class
   Token
-} from "prism-code-editor/prism"
+} from "prism-code-editor-lightweight/prism"
 
 // Utilities used by grammars
 import {
   clone, insertBefore, extend, embeddedIn
-} from "prism-code-editor/prism/utils"
+} from "prism-code-editor-lightweight/prism/utils"
 
 // To add your own language, just mutate the languages record
 languages["my-language"] = {
@@ -219,34 +223,34 @@ For more information about these exports, read the [API documentation](https://p
 
 ### Importing grammars
 
-As you might've seen from the examples, prism grammars are imported from `prism-code-editor/prism/languages/*`. Importing a grammar will automatically register it through side effects. If you're importing multiple grammars, import order usually won't matter. The exception comes when grammars modify other grammars. Take this example:
+As you might've seen from the examples, prism grammars are imported from `prism-code-editor-lightweight/prism/languages/*`. Importing a grammar will automatically register it through side effects. If you're importing multiple grammars, import order usually won't matter. The exception comes when grammars modify other grammars. Take this example:
 
 ```javascript
-import "prism-code-editor/prism/languages/typescript"
-import "prism-code-editor/prism/languages/js-templates"
+import "prism-code-editor-lightweight/prism/languages/typescript"
+import "prism-code-editor-lightweight/prism/languages/js-templates"
 ```
 
 This won't add `js-templates` features to `typescript` because it extended `javascript` before `js-templates` was added. Swapping the import order fixes the issue.
 
 If you need access to many languages, you can import the following entry points:
 
-- `prism-code-editor/prism/languages` for all languages (~180kB)
-- `prism-code-editor/prism/languages/common` for [42 common languages](https://github.com/FIameCaster/prism-code-editor/tree/main/package/src/prism/languages/common.js) (~30kB)
+- `prism-code-editor-lightweight/prism/languages` for all languages (~180kB)
+- `prism-code-editor-lightweight/prism/languages/common` for [42 common languages](https://github.com/hunghg255/prism-code-editor-lightweight/-lightweight/tree/main/package/src/prism/languages/common.js) (~30kB)
 
 Take this simple markdown editor as an example. Here, only the markdown grammar is required initially. The common languages are dynamically imported and once they load, the editor is updated, which will highlight all markdown code blocks.
 
 ```javascript
-import "prism-code-editor/prism/languages/markdown"
-import { createEditor } from "prism-code-editor"
+import "prism-code-editor-lightweight/prism/languages/markdown"
+import { createEditor } from "prism-code-editor-lightweight"
 
 const editor = createEditor("#editor", { language: "markdown" })
 
-import("prism-code-editor/prism/languages/common").then(() => editor.update())
+import("prism-code-editor-lightweight/prism/languages/common").then(() => editor.update())
 ```
 
 ## Usage with Node.js
 
-The entry points `prism-code-editor/prism`, `prism-code-editor/prism/utils` and the grammars from `prism-code-editor/prism/languages/*` can all run on Node.js for those who want to generate HTML with it.
+The entry points `prism-code-editor-lightweight/prism`, `prism-code-editor-lightweight/prism/utils` and the grammars from `prism-code-editor-lightweight/prism/languages/*` can all run on Node.js for those who want to generate HTML with it.
 
 ## Examples
 
@@ -297,39 +301,39 @@ And it includes these commands:
 ### Importing extensions
 
 ```javascript
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { matchTags } from "prism-code-editor/match-tags"
-import { indentGuides } from "prism-code-editor/guides"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { matchTags } from "prism-code-editor-lightweight/match-tags"
+import { indentGuides } from "prism-code-editor-lightweight/guides"
 import {
   searchWidget,
   highlightSelectionMatches,
   highlightCurrentWord,
   showInvisibles
-} from "prism-code-editor/search"
-import { defaultCommands, editHistory } from "prism-code-editor/commands"
-import { cursorPosition } from "prism-code-editor/cursor"
-import { copyButton } from "prism-code-editor/copy-button"
-import { highlightBracketPairs } from "prism-code-editor/highlight-brackets"
+} from "prism-code-editor-lightweight/search"
+import { defaultCommands, editHistory } from "prism-code-editor-lightweight/commands"
+import { cursorPosition } from "prism-code-editor-lightweight/cursor"
+import { copyButton } from "prism-code-editor-lightweight/copy-button"
+import { highlightBracketPairs } from "prism-code-editor-lightweight/highlight-brackets"
 import {
   readOnlycodeFolding,
   markdownFolding,
   blockCommentFolding
-} from "prism-code-editor/code-folding"
-import { autoComplete } from "prism-code-editor/autocomplete"
+} from "prism-code-editor-lightweight/code-folding"
+import { autoComplete } from "prism-code-editor-lightweight/autocomplete"
 
 // And CSS
-import "prism-code-editor/search.css"
-import "prism-code-editor/copy-button.css"
-import "prism-code-editor/code-folding.css"
-import "prism-code-editor/invisibles.css"
-import "prism-code-editor/autocomplete.css"
-import "prism-code-editor/autocomplete-icons.css"
+import "prism-code-editor-lightweight/search.css"
+import "prism-code-editor-lightweight/copy-button.css"
+import "prism-code-editor-lightweight/code-folding.css"
+import "prism-code-editor-lightweight/invisibles.css"
+import "prism-code-editor-lightweight/autocomplete.css"
+import "prism-code-editor-lightweight/autocomplete-icons.css"
 ```
 
 ### Creating your own
 
 ```typescript
-import { Extension } from "prism-code-editor"
+import { Extension } from "prism-code-editor-lightweight"
 
 interface MyExtension extends Extension {}
 
@@ -350,7 +354,7 @@ You can also write a class with an update method if that's preferred.
 You can also use a plain function as an extension. This function won't be called when the editor's options change.
 
 ```typescript
-import { BasicExtension, createEditor } from "prism-code-editor"
+import { BasicExtension, createEditor } from "prism-code-editor-lightweight"
 
 const myExtension = (): BasicExtension => {
   return (editor, options) => {
@@ -365,12 +369,12 @@ createEditor("#editor", {}, (editor, options) => {
 
 ## Handling Tab
 
-If you're adding the default commands to your editor, the tab key is used for indentation. If this isn't wanted, you can change the behavior. 
+If you're adding the default commands to your editor, the tab key is used for indentation. If this isn't wanted, you can change the behavior.
 
 Users can at any time toggle tab capturing with Ctrl+M / Ctrl+Shift+M (Mac).
 
 ```javascript
-import { setIgnoreTab } from "prism-code-editor/commands"
+import { setIgnoreTab } from "prism-code-editor-lightweight/commands"
 setIgnoreTab(true)
 ```
 
@@ -378,12 +382,12 @@ setIgnoreTab(true)
 
 ### Importing themes
 
-There are currently 13 different themes you can import, one of them being from `prism-code-editor/themes/github-dark.css`.
+There are currently 13 different themes you can import, one of them being from `prism-code-editor-lightweight/themes/github-dark.css`.
 
 You can also dynamically import themes into your JavaScript. This is used by the demo website.
 
 ```javascript
-import { loadTheme } from "prism-code-editor/themes"
+import { loadTheme } from "prism-code-editor-lightweight/themes"
 
 const isDark = matchMedia("(prefers-color-scheme: dark)").matches
 
@@ -397,7 +401,7 @@ loadTheme(isDark ? "github-dark" : "github-light").then(theme => {
 If you're using the setups or web components, you can override the existing themes or add new ones. The example below might be different if you're not using Vite as your bundler.
 
 ```javascript
-import { registerTheme } from "prism-code-editor/themes"
+import { registerTheme } from "prism-code-editor-lightweight/themes"
 
 registerTheme("my-theme", () => import("./my-theme.css?inline"))
 ```
@@ -407,7 +411,7 @@ registerTheme("my-theme", () => import("./my-theme.css?inline"))
 You can import a stylesheet that will give a custom scrollbar to desktop Chrome and Safari.
 
 ```javascript
-import "prism-code-editor/scrollbar.css"
+import "prism-code-editor-lightweight/scrollbar.css"
 ```
 
 You can change the color of the scrollbar thumb using the custom property `--editor__bg-scrollbar`. Different alphas will be set based on the state of the scrollbar thumb.
@@ -435,7 +439,7 @@ There are many classes added to `.prism-code-editor` you can use to style the ed
 
 #### Creating a theme
 
-It's likely that none of the themes perfectly fit your website. A great solution is to modify one of the [included themes](https://github.com/FIameCaster/prism-code-editor/tree/main/package/src/themes) to better suit your website. Alternatively, you can import one of the themes and override some of the styles in your on stylesheets.
+It's likely that none of the themes perfectly fit your website. A great solution is to modify one of the [included themes](https://github.com/hunghg255/prism-code-editor-lightweight/-lightweight/tree/main/package/src/themes) to better suit your website. Alternatively, you can import one of the themes and override some of the styles in your on stylesheets.
 
 Below is some additional styling information:
 
@@ -453,10 +457,10 @@ If you're not using the setups, automatic indentation, toggling comments, and au
 The easiest way to get this working, is to import all languages. This will add comment toggling, etc. to almost all Prism languages at ~3.6kB gzipped. It's recommended to dynamically import this since it's usually not needed before the page has loaded.
 
 ```javascript
-import("prism-code-editor/languages")
+import("prism-code-editor-lightweight/languages")
 ```
 
-You can also import `prism-code-editor/languages/common` instead to support a subset of common languages at less than 2kB gzipped.
+You can also import `prism-code-editor-lightweight/languages/common` instead to support a subset of common languages at less than 2kB gzipped.
 
 #### Individual imports
 
@@ -465,7 +469,7 @@ Lastly, if you know exactly which languages you need, you can import behavior fo
 <details>
   <summary>List of all imports</summary>
   <br>
-  <p>The import for <code>ada</code> would be <code>prism-code-editor/languages/ada</code> for example. This list is <strong>NOT</strong> for Prism grammars.</p>
+  <p>The import for <code>ada</code> would be <code>prism-code-editor-lightweight/languages/ada</code> for example. This list is <strong>NOT</strong> for Prism grammars.</p>
   <table>
     <thead>
       <tr><th>Import</th><th>Languages/aliases added</th></tr>
@@ -712,7 +716,7 @@ Lastly, if you know exactly which languages you need, you can import behavior fo
 ### Adding your own
 
 ```javascript
-import { languageMap } from "prism-code-editor"
+import { languageMap } from "prism-code-editor-lightweight"
 
 languageMap.whatever = {
   comments: {
@@ -744,7 +748,7 @@ Adding an editor in the middle of your page will cause layout shifts. This is ba
 A second solution is to have a placeholder element which gets replaced by your editor. This is the ideal solution for read-only code examples where you want `height: auto` instead of a vertical scroll bar. To make this easier, there's a wrapper around `createEditor` intended for exactly this which replaces your element instead of appending the editor to it. The placeholder element's `textContent` will be used as the editor's code unless `options.value` is defined.
 
 ```javascript
-import { editorFromPlaceholder } from "prism-code-editor"
+import { editorFromPlaceholder } from "prism-code-editor-lightweight"
 
 const editor = editorFromPlaceholder("#editor", { language: "javascript" })
 ```
@@ -753,7 +757,7 @@ If you know the height of the editor, your placeholder could be as simple as a d
 
 ## Tooltips
 
-There's a utility to display tooltips above or below the cursor that can be imported from `prism-code-editor/tooltips`.
+There's a utility to display tooltips above or below the cursor that can be imported from `prism-code-editor-lightweight/tooltips`.
 
 ```typescript
 const addTooltip = (editor: PrismEditor, element: HTMLElement, fixedWidth?: boolean): [ShowTooltip, HideTooltip]
@@ -766,7 +770,7 @@ If you want the tooltip to always be visible when the user scrolls horizontally,
 ## Overscroll
 
 ```javascript
-import { addOverscroll, removeOverscroll } from "prism-code-editor/tooltips"
+import { addOverscroll, removeOverscroll } from "prism-code-editor-lightweight/tooltips"
 
 addOverscroll(editor)
 ```
@@ -778,7 +782,7 @@ This will allow users to scroll until the last line is at the top of the editor.
 RTL support is disabled by default. To enable it, you need to import an extra stylesheet, only then will the `rtl` option do something.
 
 ```javascript
-import "prism-code-editor/rtl-layout.css"
+import "prism-code-editor-lightweight/rtl-layout.css"
 ```
 
 RTL support is currently experimental due to multiple browser bugs being present:
@@ -818,7 +822,7 @@ Changing `editor.inputCommandMap` will work the exact same way.
 The library includes a custom element wrapper for each of the 4 setups you can import.
 
 ```typescript
-import { addBasicEditor, PrismEditorElement } from "prism-code-editor/web-component"
+import { addBasicEditor, PrismEditorElement } from "prism-code-editor-lightweight/web-component"
 
 // Adds a web component with the specified name
 addBasicEditor("prism-editor")
@@ -861,7 +865,7 @@ This library does not support any Prism plugins since Prism hooks have been remo
 
 Some grammars have had small changes, most notably markup tags' grammar. So Prism themes will work to style the tokens, but there can be some slight differences.
 
-PrismJS automatically adds the global regex flag to the pattern of greedy tokens. This has been removed, so if you're using your own Prism grammars, you might have to add the global flag to the greedy tokens. 
+PrismJS automatically adds the global regex flag to the pattern of greedy tokens. This has been removed, so if you're using your own Prism grammars, you might have to add the global flag to the greedy tokens.
 
 ## Credits
 

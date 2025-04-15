@@ -54,7 +54,7 @@ const isMultiline = (str: string, start: number, end: number) =>
  *
  * Very minimal downsides to adding this extension dynamically.
  *
- * Requires styles from `prism-code-editor/code-folding.css`
+ * Requires styles from `prism-code-editor-lightweight/code-folding.css`
  */
 const readOnlyCodeFolding = (...providers: FoldingRangeProvider[]): ReadOnlyCodeFolding => {
 	let cEditor: PrismEditor

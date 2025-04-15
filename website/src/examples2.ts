@@ -1,17 +1,17 @@
 export const code = [
 	`// index.ts
-import "prism-code-editor/prism/languages/markup"
-import "prism-code-editor/prism/languages/css-extras"
-import "prism-code-editor/prism/languages/javascript"
+import "prism-code-editor-lightweight/prism/languages/markup"
+import "prism-code-editor-lightweight/prism/languages/css-extras"
+import "prism-code-editor-lightweight/prism/languages/javascript"
 
-import { createEditor } from "prism-code-editor"
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { indentGuides } from "prism-code-editor/guides"
+import { createEditor } from "prism-code-editor-lightweight"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { indentGuides } from "prism-code-editor-lightweight/guides"
 
 // Importing styles
-import "prism-code-editor/layout.css"
-import "prism-code-editor/scrollbar.css"
-import "prism-code-editor/themes/github-dark.css"
+import "prism-code-editor-lightweight/layout.css"
+import "prism-code-editor-lightweight/scrollbar.css"
+import "prism-code-editor-lightweight/themes/github-dark.css"
 
 export const editor = createEditor(
   "#editor",
@@ -23,16 +23,16 @@ export const editor = createEditor(
 import('./extensions')`,
 
 	`// extensions.ts
-import "prism-code-editor/search.css"
-import "prism-code-editor/copy-button.css"
-import "prism-code-editor/languages"
+import "prism-code-editor-lightweight/search.css"
+import "prism-code-editor-lightweight/copy-button.css"
+import "prism-code-editor-lightweight/languages"
 
-import { searchWidget, highlightSelectionMatches } from "prism-code-editor/search"
-import { defaultCommands, editHistory } from "prism-code-editor/commands"
-import { cursorPosition } from "prism-code-editor/cursor"
-import { copyButton } from "prism-code-editor/copy-button"
-import { matchTags } from "prism-code-editor/match-tags"
-import { highlightBracketPairs } from "prism-code-editor/highlight-brackets"
+import { searchWidget, highlightSelectionMatches } from "prism-code-editor-lightweight/search"
+import { defaultCommands, editHistory } from "prism-code-editor-lightweight/commands"
+import { cursorPosition } from "prism-code-editor-lightweight/cursor"
+import { copyButton } from "prism-code-editor-lightweight/copy-button"
+import { matchTags } from "prism-code-editor-lightweight/match-tags"
+import { highlightBracketPairs } from "prism-code-editor-lightweight/highlight-brackets"
 import { editor } from "./index"
 
 editor.addExtensions(
@@ -48,7 +48,7 @@ editor.addExtensions(
 
 	`import {
   addBasicEditor, PrismEditorElement
-} from "prism-code-editor/web-component"
+} from "prism-code-editor-lightweight/web-component"
 
 // Adds a web component with the specified name
 addBasicEditor("prism-editor")
@@ -77,12 +77,12 @@ console.log(editorElement.editor)`,
   The editors initial code goes here
 </prism-editor>`,
 
-	`import { createEditor } from "prism-code-editor"
+	`import { createEditor } from "prism-code-editor-lightweight"
 const editor = createEditor("#editor", { language: "html" })
 
 // Adding the word highlighting extension
-import { highlightCurrentWord } from "prism-code-editor/search"
-import { getClosestToken } from "prism-code-editor/utils"
+import { highlightCurrentWord } from "prism-code-editor-lightweight/search"
+import { getClosestToken } from "prism-code-editor-lightweight/utils"
 
 // Filter away words starting inside a string, comment, keyword or regex token
 const selector = ".string, .comment, .keyword, .regex"
@@ -93,7 +93,7 @@ editor.addExtensions(
 )
 
 // Dynamically importing themes inline
-import { loadTheme } from "prism-code-editor/themes"
+import { loadTheme } from "prism-code-editor-lightweight/themes"
 
 const isDark = matchMedia("(prefers-color-scheme: dark)").matches
 
@@ -102,7 +102,7 @@ loadTheme(isDark ? "github-dark" : "github-light").then(theme => {
 })
 
 // Adding custom language behavior
-import { languageMap } from "prism-code-editor"
+import { languageMap } from "prism-code-editor-lightweight"
 
 languageMap.whatever = {
   comments: {
@@ -122,8 +122,8 @@ languageMap.whatever = {
 To add code-folding, you must import it along with its styles.
 
 \`\`\`javascript
-import { readOnlyCodeFolding } from "prism-code-editor/code-folding"
-import "prism-code-editor/code-folding.css"
+import { readOnlyCodeFolding } from "prism-code-editor-lightweight/code-folding"
+import "prism-code-editor-lightweight/code-folding.css"
 \`\`\`
 
 This will allow folding of square- and curly brackets and XML/HTML tags.
@@ -135,9 +135,9 @@ preferably *before* the code folding.
 </h2>
 
 \`\`\`javascript
-import { createEditor } from "prism-code-editor"
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { matchTags } from "prism-code-editor/match-tags"
+import { createEditor } from "prism-code-editor-lightweight"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { matchTags } from "prism-code-editor-lightweight/match-tags"
 
 const editor = createEditor(
   "#my-editor",
@@ -173,7 +173,7 @@ the fold. Just pass it to the \`readOnlyCodeFolding\` extension to add it.
 import {
   readOnlyCodeFolding, markdownFolding,
   blockCommentFolding, FoldingRangeProvider
-} from "prism-code-editor/code-folding"
+} from "prism-code-editor-lightweight/code-folding"
 
 const myProvider: FoldingRangeProvider = editor => [
   [5, 20], [10, 15]
@@ -186,14 +186,14 @@ The \`markdownFolding\` provider adds folding of both titles and code blocks
 in markdown, and the \`blockCommentFolding\` adds folding of multiline block
 comments. In order for the comment folding to work for a language, the language
 specific behavior needs to be defined in the language map. Either import the
-behavior from \`prism-code-editor/languages/*\` or define it yourself.
+behavior from \`prism-code-editor-lightweight/languages/*\` or define it yourself.
 
 ## Read-only setup
 
 If you don't care about customization, you can use the read-only setup instead.
 
 \`\`\`javascript
-import { readonlyEditor } from "prism-code-editor/setups"
+import { readonlyEditor } from "prism-code-editor-lightweight/setups"
 \`\`\`
 `,
 ]

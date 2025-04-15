@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Lightweight, extensible code editor with syntax highlighting using Prism">
 	<title>Prism code editor</title>
-  <link rel="stylesheet" href="src/themes/github-dark.css" id="theme">
+	<link rel="stylesheet" href="src/themes/github-dark.css" id="theme">
 	<script type="module" src="src/testsite/index.ts"></script>
 </head>
+
 <body>
 	<main>
 		<h1>Prism code editor</h1>
 		<p class="description">Lightweight, extensible code editor with syntax highlighting using Prism</p>
 		<div class="rows">
-			<a class="btn" href="https://github.com/FIameCaster/prism-code-editor">Documentation</a>
+			<a class="btn" href="https://github.com/hunghg255/prism-code-editor-lightweight/">Documentation</a>
 			<div class="input-group">
 				<label for="themes">Theme:</label>
 				<div class="select">
@@ -41,7 +43,9 @@
 				<button class="tab active">Config</button>
 				<button class="tab">Result</button>
 				<div class="error" tabindex="0" aria-hidden="true">
-					<svg viewbox="0 0 19 17"><path d="M9.5 2L2 15L17 15Z"/></svg>
+					<svg viewbox="0 0 19 17">
+						<path d="M9.5 2L2 15L17 15Z" />
+					</svg>
 					<pre class="message"></pre>
 				</div>
 				<button id="run" aria-hidden="true">Run</button>
@@ -87,4 +91,5 @@
 		<readonly-editor readonly line-numbers language="markdown" theme="github-dark"></readonly-editor>
 	</section>
 </body>
+
 </html>

@@ -7,7 +7,7 @@ import { createSearchAPI } from "./search.js"
  * By passing `true`, they're always shown, which negatively impacts performance when
  * typing, and increases the amount of elements in the DOM.
  *
- * Requires styling from `prism-code-editor/invisibles.css`.
+ * Requires styling from `prism-code-editor-lightweight/invisibles.css`.
  */
 const showInvisibles = (alwaysShow?: boolean): BasicExtension => {
 	return editor => {

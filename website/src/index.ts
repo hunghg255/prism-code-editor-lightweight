@@ -1,12 +1,12 @@
-import "prism-code-editor/prism/languages/javascript"
-import { createEditor, editorFromPlaceholder } from "prism-code-editor"
-import "prism-code-editor/layout.css"
-import "prism-code-editor/scrollbar.css"
+import "prism-code-editor-lightweight/prism/languages/javascript"
+import { createEditor, editorFromPlaceholder } from "prism-code-editor-lightweight"
+import "prism-code-editor-lightweight/layout.css"
+import "prism-code-editor-lightweight/scrollbar.css"
 import "./style.css"
-import initialTheme from "prism-code-editor/themes/github-dark.css?inline"
+import initialTheme from "prism-code-editor-lightweight/themes/github-dark.css?inline"
 import { basicUsage, startOptions } from "./examples1"
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { indentGuides } from "prism-code-editor/guides"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { indentGuides } from "prism-code-editor-lightweight/guides"
 
 const style = document.createElement("style")
 const wrapper = document.querySelector<HTMLDivElement>(".editor-wrapper")!

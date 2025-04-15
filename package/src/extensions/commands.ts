@@ -37,9 +37,9 @@ const whitespaceEnd = (str: string) => str.search(/\S|$/)
  * - Ctrl+/ (Cmd+/ on MacOS): Toggle comment
  * - Shift+Alt+A: Toggle block comment
  * - Ctrl+M (Ctrl+Shift+M on MacOS): Toggle Tab capturing
- * 
+ *
  * The shortcuts for the commands are not easily customizable. If you want to customize
- * them, you can copy the {@link https://github.com/FIameCaster/prism-code-editor/blob/main/package/src/extensions/commands.ts|source}
+ * them, you can copy the {@link https://github.com/hunghg255/prism-code-editor-lightweight/-lightweight/blob/main/package/src/extensions/commands.ts|source}
  * and change the conditions.
  *
  * @param selfClosePairs Pairs of self-closing brackets and quotes.

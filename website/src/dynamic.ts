@@ -1,44 +1,44 @@
 import "./async.css"
-import "prism-code-editor/search.css"
-import "prism-code-editor/copy-button.css"
-import "prism-code-editor/code-folding.css"
-import "prism-code-editor/rtl-layout.css"
-import "prism-code-editor/autocomplete.css"
-import "prism-code-editor/autocomplete-icons.css"
-import "prism-code-editor/languages/clike"
-import "prism-code-editor/languages/css"
-import "prism-code-editor/languages/html"
-import "prism-code-editor/languages/jsx"
-import "prism-code-editor/languages/python"
-import "prism-code-editor/languages/xml"
-import "prism-code-editor/prism/languages/markup"
-import "prism-code-editor/prism/languages/css-extras"
-import "prism-code-editor/prism/languages/js-templates"
-import "prism-code-editor/prism/languages/jsdoc"
-import "prism-code-editor/prism/languages/regex"
-import "prism-code-editor/prism/languages/tsx"
-import "prism-code-editor/prism/languages/markdown"
-import "prism-code-editor/prism/languages/clike"
-import "prism-code-editor/prism/languages/python"
-import { copyButton } from "prism-code-editor/copy-button"
-import { defaultCommands, editHistory } from "prism-code-editor/commands"
+import "prism-code-editor-lightweight/search.css"
+import "prism-code-editor-lightweight/copy-button.css"
+import "prism-code-editor-lightweight/code-folding.css"
+import "prism-code-editor-lightweight/rtl-layout.css"
+import "prism-code-editor-lightweight/autocomplete.css"
+import "prism-code-editor-lightweight/autocomplete-icons.css"
+import "prism-code-editor-lightweight/languages/clike"
+import "prism-code-editor-lightweight/languages/css"
+import "prism-code-editor-lightweight/languages/html"
+import "prism-code-editor-lightweight/languages/jsx"
+import "prism-code-editor-lightweight/languages/python"
+import "prism-code-editor-lightweight/languages/xml"
+import "prism-code-editor-lightweight/prism/languages/markup"
+import "prism-code-editor-lightweight/prism/languages/css-extras"
+import "prism-code-editor-lightweight/prism/languages/js-templates"
+import "prism-code-editor-lightweight/prism/languages/jsdoc"
+import "prism-code-editor-lightweight/prism/languages/regex"
+import "prism-code-editor-lightweight/prism/languages/tsx"
+import "prism-code-editor-lightweight/prism/languages/markdown"
+import "prism-code-editor-lightweight/prism/languages/clike"
+import "prism-code-editor-lightweight/prism/languages/python"
+import { copyButton } from "prism-code-editor-lightweight/copy-button"
+import { defaultCommands, editHistory } from "prism-code-editor-lightweight/commands"
 import {
 	highlightSelectionMatches,
 	searchWidget,
 	highlightCurrentWord,
-} from "prism-code-editor/search"
-import { cursorPosition } from "prism-code-editor/cursor"
-import { markdownFolding, readOnlyCodeFolding } from "prism-code-editor/code-folding"
-import { matchTags } from "prism-code-editor/match-tags"
-import { highlightBracketPairs } from "prism-code-editor/highlight-brackets"
-import { addOverscroll, addTooltip } from "prism-code-editor/tooltips"
+} from "prism-code-editor-lightweight/search"
+import { cursorPosition } from "prism-code-editor-lightweight/cursor"
+import { markdownFolding, readOnlyCodeFolding } from "prism-code-editor-lightweight/code-folding"
+import { matchTags } from "prism-code-editor-lightweight/match-tags"
+import { highlightBracketPairs } from "prism-code-editor-lightweight/highlight-brackets"
+import { addOverscroll, addTooltip } from "prism-code-editor-lightweight/tooltips"
 import {
 	autoComplete,
 	AutoCompleteConfig,
 	completeSnippets,
 	fuzzyFilter,
 	registerCompletions,
-} from "prism-code-editor/autocomplete"
+} from "prism-code-editor-lightweight/autocomplete"
 import {
 	completeIdentifiers,
 	completeKeywords,
@@ -48,21 +48,21 @@ import {
 	jsSnipets,
 	jsxTagCompletion,
 	reactTags,
-} from "prism-code-editor/autocomplete/javascript"
+} from "prism-code-editor-lightweight/autocomplete/javascript"
 import {
 	globalHtmlAttributes,
 	htmlTags,
 	markupCompletion,
-} from "prism-code-editor/autocomplete/markup"
-import { cssCompletion } from "prism-code-editor/autocomplete/css"
+} from "prism-code-editor-lightweight/autocomplete/markup"
+import { cssCompletion } from "prism-code-editor-lightweight/autocomplete/css"
 
-import { EditorOptions, PrismEditor, createEditor, editorFromPlaceholder } from "prism-code-editor"
-import { getClosestToken } from "prism-code-editor/utils"
-import { loadTheme } from "prism-code-editor/themes"
+import { EditorOptions, PrismEditor, createEditor, editorFromPlaceholder } from "prism-code-editor-lightweight"
+import { getClosestToken } from "prism-code-editor-lightweight/utils"
+import { loadTheme } from "prism-code-editor-lightweight/themes"
 import { editor, editors, placeholders, startOptions, style, wrapper } from "./index"
 import { startCode } from "./examples1"
-import { matchBrackets } from "prism-code-editor/match-brackets"
-import { indentGuides } from "prism-code-editor/guides"
+import { matchBrackets } from "prism-code-editor-lightweight/match-brackets"
+import { indentGuides } from "prism-code-editor-lightweight/guides"
 import { code } from "./examples2"
 
 let currentOptions = startOptions

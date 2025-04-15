@@ -1,9 +1,9 @@
 export const startCode = `<body>
   <style>
-    
+
   </style>
   <script>
-    
+
   </script>
 </body>`,
 
@@ -29,8 +29,8 @@ const options = {
 basicUsage = `import {
   minimalEditor, basicEditor,
   fullEditor, readonlyEditor
-} from "prism-code-editor/setups"
-import "prism-code-editor/prism/languages/javascript"
+} from "prism-code-editor-lightweight/setups"
+import "prism-code-editor-lightweight/prism/languages/javascript"
 
 const editor = basicEditor(
   "#editor",

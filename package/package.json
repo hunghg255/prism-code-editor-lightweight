@@ -98,7 +98,7 @@
   "author": "FlameCaster",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FIameCaster/prism-code-editor.git"
+    "url": "git+https://github.com/hunghg255/prism-code-editor-lightweight/.git"
   },
   "license": "MIT",
   "sideEffects": [

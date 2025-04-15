@@ -40,7 +40,7 @@ export interface SearchWidget extends BasicExtension {
 
 /**
  * Extension that adds a widget for search and replace functionality.
- * This extension needs styles from `prism-code-editor/search.css`.
+ * This extension needs styles from `prism-code-editor-lightweight/search.css`.
  */
 export const searchWidget = (): SearchWidget => {
 	let prevLength: number

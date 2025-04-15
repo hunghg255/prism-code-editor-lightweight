@@ -12,7 +12,7 @@ const clipboard = navigator.clipboard
 /**
  * Extension that adds a copy button to the editor.
  * Probably best used with a read-only editor.
- * You must also import styles from `prism-code-editor/copy-button.css`.
+ * You must also import styles from `prism-code-editor-lightweight/copy-button.css`.
  */
 export const copyButton = (): BasicExtension => editor => {
 	const container = template(),
